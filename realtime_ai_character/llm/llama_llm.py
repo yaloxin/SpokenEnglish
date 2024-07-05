@@ -37,6 +37,7 @@ class LlamaLlm(LLM):
             response_content = ""
             for line in response.iter_lines():
                 if line:
+                    decoded_line = line.decode('utf-8')  # 解码字节数据为字符串
                     response_content += json.loads(line)["response"]
             return response_content
         else:
